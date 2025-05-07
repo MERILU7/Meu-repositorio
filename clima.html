@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>🌤️ Clima Atual</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e0f7fa;
+      margin: 40px;
+      text-align: center;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    .resultado {
+      margin-top: 20px;
+      font-size: 20px;
+      color: #003366;
+    }
+    .erro {
+      color: red;
+    }
+    h1 {
+      color: #005580;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Consultar Clima Atual</h1>
+  <input type="text" id="cidade" placeholder="Digite o nome da cidade">
+  <br>
+  <button onclick="buscarClima()">Buscar</button>
+
+  <div class="resultado" id="resultado"></div>
+
+  <script>
+    // 🔑 Coloque sua chave aqui
+    const apiKey = '9f1cb5f29c12370a0ce7d8c89b5d4f27';
+
+    function buscarClima() {
+      const cidadeInput = document.getElementById('cidade');
+      const resultadoDiv = document.getElementById('resultado');
+      const cidade = cidadeInput.value.trim();
+
+      if (!cidade) {
+        resultadoDiv.innerHTML = '<p class="erro">⚠️ Digite o nome de uma cidade.</p>';
+        return;
+      }
+
+      resultadoDiv.innerHTML = 'Carregando...';
+
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(cidade)}&appid=${apiKey}&lang=pt_br&units=metric`;
+
+      fetch(url)
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then(data => {
+          const temperatura = data.main.temp.toFixed(1);
+          const descricao = data.weather[0].description;
+          const nomeCidade = data.name;
+
+          resultadoDiv.innerHTML = `
+            <p><strong>${nomeCidade}</strong></p>
+            <p>🌡️ Temperatura: ${temperatura} °C</p>
+            <p>📝 Condição: ${descricao}</p>
+          `;
+        })
+        .catch(error => {
+          console.error('Erro:', error.message);
+
+          if (error.message.includes('401')) {
+            resultadoDiv.innerHTML = '<p class="erro">❌ Chave de API inválida ou não autorizada.</p>';
+          } else if (error.message.includes('404')) {
+            resultadoDiv.innerHTML = '<p class="erro">❌ Cidade não encontrada. Tente outra.</p>';
+          } else {
+            resultadoDiv.innerHTML = '<p class="erro">⚠️ Erro ao buscar informações. Tente novamente.</p>';
+          }
+        });
+    }
+  </script>
+
+</body>
+</html>
