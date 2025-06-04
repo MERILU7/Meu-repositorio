@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    
+    <h1 id="resultado">O resultado será exibido aqui</h1>
+    <input type="number" placeholder="Digite seu salário" id="salariodousuario">
+    <button onclick="CalcularSalario()">Enviar</button>
+
+    <script>
+        function CalcularSalario() {
+            // 1. Pegar o elemento e seu valor
+            const inputElement = document.getElementById("salariodousuario");
+            const salario = parseFloat(inputElement.value);
+
+            // 2. Validar o valor digitado
+            if (isNaN(salario)) {
+                document.getElementById("resultado").innerHTML = "Erro: Digite um número válido.";
+                return;
+            }
+
+            if (salario < 0) {
+                document.getElementById("resultado").innerHTML = "Erro: O salário não pode ser negativo.";
+                return;
+            }
+
+            // 3. Calcular desconto e salário final
+            const desconto = salario * 10 / 100;
+            const salarioFinal = salario - desconto;
+
+            // 4. Mostrar resultado
+            document.getElementById("resultado").innerHTML = 
+                "Desconto: R$" + desconto.toFixed(2) + "<br>" +
+                "Salário final: R$" + salarioFinal.toFixed(2);
+        }
+    </script>
+</body>
+</html>

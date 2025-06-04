@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Classificação de Produtos</title>
+</head>
+<body>
+
+    <h1>Classificador de Produtos por Preço</h1>
+
+    <label for="precoInput">Digite o preço do produto:</label><br>
+    <input type="number" id="precoInput" placeholder="Ex: 90"><br><br>
+
+    <button onclick="classificar()">Classificar</button>
+
+    <h2>Resultado:</h2>
+    <p id="resultado"></p>
+
+    <script>
+        function Classprodutos(preco) {
+            if (preco > 0 && preco < 50) {
+                return "Econômico";
+            }
+            if (preco >= 50 && preco <= 100) {
+                return "Intermediário";
+            }
+            if (preco > 100) {
+                return "Premium";
+            }
+
+            // Caso o valor seja inválido (0 ou negativo)
+            return "Preço inválido";
+        }
+
+        function classificar() {
+            const input = document.getElementById("precoInput").value;
+            const preco = parseFloat(input);
+
+            const categoria = Classprodutos(preco);
+            document.getElementById("resultado").innerText = "Categoria: " + categoria;
+        }
+    </script>
+
+</body>
+</html>
