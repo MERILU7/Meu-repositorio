@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <script>
+        // Função que filtra palavras com base no comprimento mínimo
+        function filtrarPalavras(palavras, comprimentoMinimo) {
+    // Filtra as palavras com base no comprimento mínimo
+    return palavras.filter(function(palavra) {
+        return palavra.length >= comprimentoMinimo;
+    });
+}
+
+// Testando a função
+const listaDePalavras = ["maçã", "banana", "uva", "abacaxi", "kiwi", "laranja"];
+const minimo = 1;
+
+const resultado = filtrarPalavras(listaDePalavras, minimo);
+
+console.log(resultado);  // Saída esperada: ["banana", "abacaxi", "laranja"]
+        console.log("Palavras com 5 ou mais letras:", resultado);
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <script>
+        function contarVogais(palavra) {
+    // Define as vogais
+    const vogais = "aeiouAEIOU";
+    let contador = 0;
+
+    // Loop para percorrer cada caractere da palavra
+    for (let i = 0; i < palavra.length; i++) {
+        if (vogais.includes(palavra[i])) { // Verifica se o caractere é uma vogal
+            contador++;
+        }
+    }
+
+    // Retorna o número de vogais
+    return contador;
+}
+
+// Testando a função
+console.log(contarVogais("Hello"));  // Saída: 2 (e, o)
+console.log(contarVogais("Exemplo")); // Saída: 3 (e, e, o)
+console.log(contarVogais("JavaScript")); // Saída: 3 (a, a, i)
+
+    </script>
+</body>
+</html>
