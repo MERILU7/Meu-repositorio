@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Filtrar Palavras por Tamanho</title>
+</head>
+<body>
+
+    <h1>Filtrar Palavras por Tamanho</h1>
+
+    <p>Palavras da lista: ["maçã", "banana", "uva", "abacaxi", "kiwi", "laranja"]</p>
+    <p>Digite o comprimento mínimo:</p>
+    
+    <input type="number" id="comprimento" placeholder="Digite um número" />
+    <button onclick="executarFiltro()">Filtrar</button>
+
+    <h2>Resultado:</h2>
+    <p id="saida"></p>
+
+    <script>
+        // Função que filtra palavras com base no comprimento mínimo
+        function filtrarPalavras(palavras, comprimentoMinimo) {
+            return palavras.filter(function(palavra) {
+                return palavra.length >= comprimentoMinimo;
+            });
+        }
+
+        // Função chamada ao clicar no botão
+        function executarFiltro() {
+            const listaDePalavras = ["maçã", "banana", "uva", "abacaxi", "kiwi", "laranja"];
+            const input = document.getElementById("comprimento").value;
+            const comprimentoMinimo = parseInt(input);
+
+            if (isNaN(comprimentoMinimo) || comprimentoMinimo < 0) {
+                document.getElementById("saida").innerText = "Por favor, insira um número válido.";
+                return;
+            }
+
+            const resultado = filtrarPalavras(listaDePalavras, comprimentoMinimo);
+            document.getElementById("saida").innerText = "Palavras com " + comprimentoMinimo + " ou mais letras: " + JSON.stringify(resultado);
+        }
+    </script>
+
+</body>
+</html>

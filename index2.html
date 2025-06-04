@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <h1 id="resultado" >O resultado sera exibido aqui</h1>
+    <input type="number" placeholder="Digite sua idade" id="idadedouser">
+    <button onclick="VerificarIdade()">Enviar</button>
+    <script>
+        function VerificarIdade() {
+            // 1. Pegar o valor digitado e converter para número
+            const inputElement = document.getElementById("idadedouser");
+            const idade = parseFloat(inputElement.value);
+
+            // 2. Validar se é um número válido
+            if (isNaN(idade)) {
+                document.getElementById("resultado").innerHTML = "Erro: Digite um número válido.";
+                return;
+            }
+
+            // 3. Verificar se é maior ou menor de idade
+            if (idade >= 18) {
+                document.getElementById("resultado").innerHTML = "Maior de idade";
+            } else {
+                document.getElementById("resultado").innerHTML = "Menor de idade";
+            }
+        }
+    </script>
+</body>
+</html>
