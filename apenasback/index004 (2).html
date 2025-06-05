@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Gerador de Senha</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css">
+    <script src="main.js"></script>
+</head>
+<body>
+    <script>
+        function gerarsenha(comprimento) {
+            // Verifica se o comprimento é um número e se é positivo
+            if (typeof comprimento !== 'number' || comprimento <= 0) {
+                return "Erro: o comprimento da senha deve ser um número positivo.";
+            }
+
+            // Lista de caracteres possíveis (letras maiúsculas, minúsculas e números)
+            const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_-+=<>?";
+            
+            let senha = "";
+            
+            // Gera a senha aleatória
+            for (let i = 0; i < comprimento; i++) {
+                // Escolhe um índice aleatório entre 0 e o comprimento da string 'caracteres'
+                const indice = Math.floor(Math.random() * caracteres.length);
+                senha += caracteres[indice];  // Adiciona o caractere escolhido à senha
+            }
+
+            return senha;  // Retorna a senha gerada
+        }
+
+        // Exemplo de uso:
+        console.log(gerarsenha(26)); // Gerar uma senha de 10 caracteres
+    </script>
+</body>
+</html>
