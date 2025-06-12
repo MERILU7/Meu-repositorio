@@ -1,0 +1,26 @@
+[
+  {
+    "nome": "Elden Ring",
+    "ano": 2022,
+    "plataforma": "PC, PS5, Xbox Series X",
+    "descricao": "Um épico jogo de ação e RPG desenvolvido pela FromSoftware."
+  },
+  {
+    "nome": "Valorant",
+    "ano": 2020,
+    "plataforma": "PC",
+    "descricao": "Jogo de tiro tático em primeira pessoa da Riot Games."
+  },
+  {
+    "nome": "Minecraft",
+    "ano": 2011,
+    "plataforma": "PC, PS4, Xbox, Mobile",
+    "descricao": "Jogo sandbox de construção e sobrevivência criado por Mojang."
+  },
+  {
+    "nome": "The Legend of Zelda: Breath of the Wild",
+    "ano": 2017,
+    "plataforma": "Nintendo Switch",
+    "descricao": "Um jogo de aventura e exploração da Nintendo com mundo aberto."
+  }
+]
